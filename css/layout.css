@@ -1,0 +1,104 @@
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen 
+and (max-device-width : 767px) {
+/* Styles */
+.main-margin {
+  padding: 50px;
+}
+#map {
+  height: 30vh;
+  width: 100%;
+  padding: 0px;
+  float: right;
+}
+  .modal {
+    position: absolute;
+    background-color: white;
+    top: 50px;
+    left: 0px;
+    padding: 10px;
+  }
+  .drop-sm {
+    margin-top: 20%;
+  }
+  .col-sm-1 {
+    width: 100%;
+  }
+  .col-sm-2 {
+    width: 49%;
+  }
+  .col-sm-4 {
+    width: 24%;
+  }
+  .col-sm-3 {
+    width: 32.5%;
+  }
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 768px)  {
+/* Styles */
+.main-margin {
+  margin-left: 30px;
+  margin-top: 2%;
+}
+.modal {
+  position: absolute;
+  background-color: white;
+  top: 20px;
+  left: 35%;
+  width: 30%;
+}
+.col-md-1 {
+  width: 100%;
+}
+.col-md-2 {
+  width: 47% !important;
+  float: left !important;
+}
+.col-md-4 {
+  width: 24%;
+}
+.col-md-3 {
+  width: 32.5%;
+}
+.col-md-3-4 {
+  width: 75%;
+}
+}
+
+/* generic layout styles */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.drop-down{
+  font-size: 30px;
+  font-family: 'Raleway', sans-serif;
+}
+#move-down{
+  padding-top: 5%;
+  font-size: 45px;
+  font-family: 'Teko', sans-serif;
+}
+.section-it{
+  margin-top: 5% !important;
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.to-left{
+  float: left !important;
+}
+.to-right {
+  float: right !important;
+}
+.center-it{
+  text-align: center !important;
+}
