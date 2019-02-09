@@ -65,8 +65,6 @@ body {
 #jumbo2{
     height: 100vh;
     width: 100%;
-    margin: 0px;
-    background:linear-gradient( rgba(64, 48,117, 0.8), rgba(136,124,175, 0.8)), url('../images/chest.jpg');
 }
 #jumbo>div>h1 {
   font-size: 75px;
@@ -146,12 +144,16 @@ display: none;
   .btn-primary {
     background-color: #E96694;
   }
+  .btn-sucess {
+    background-color: rgb(14, 143, 79);
+  }
+  .btn-danger {
+    background-color: #e84118;
+  }
 
   /* modal generic styles */
 .modal-design {
     margin: 0 auto;
-    width: 70%;
-    padding: 5%;
   }
   .modal-design>p {
     position: absolute;
@@ -194,4 +196,87 @@ display: none;
     padding: 3px 0px 3px 3px;
     margin: 5px 1px 3px 0px;
     border: 1px solid #E96694;
+  }
+
+  /* card and table styles */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: white;
+  padding: 3%;
+  /* margin: 5%; */
+}
+d
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 4px;
+}
+tr {
+  cursor: pointer;
+  padding: 4px;
+}
+tr:nth-child(even) {
+  background-color: #FFF0AA;
+}
+#cr-button {
+  margin-top: -1%;
+}
+.highlight{
+  background-color: #887CAF !important;
+  color: white;
+}
+  /* toast style */
+  .toast-green{
+    background-color: rgb(14, 143, 79);
+    transition: 0.3s;
+    opacity: 0.9;
+  }
+  .toast-red{
+      background-color: #e84118;
+      transition: 0.3s;
+      opacity: 0.8;
+  }
+  #toast{
+    width:200px; 
+    height:60px; 
+    position:fixed; 
+    z-index: 3000; 
+    top: 10vh; 
+    right:50px;
+    text-align: center;
+    padding: 10px;
+  }
+  #toast>p{
+    color:white; 
+    font-size: 16px; 
+    display: flex;
+    justify-content:center;
+    align-content:center;
+    flex-direction:column;
+  }
+  #tab {
+    position: relative;
+    top: 50px;
+    width: 90%;
+    left: 50px;
+  }
+  .modal-tab{
+    margin-top: 15%;
+  }
+  .modal-tab-small {
+    margin-top: 5%;
+  }
+  #r-btn{
+    position : relative;
+    left: 10px;
+    width: 70%;
+  }
+  .presentation {
+    padding: 5%;
   }

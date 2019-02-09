@@ -102,3 +102,6 @@ and (min-device-width : 768px)  {
 .center-it{
   text-align: center !important;
 }
+.card-margin {
+  margin: 5%;
+}

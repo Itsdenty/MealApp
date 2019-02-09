@@ -41,6 +41,7 @@
         document.getElementById(currentModal).classList.add('hidden');
         document.getElementById(elem).classList.remove('hidden');
       } else {
+        console.log('cool', elem, currentModal, document.getElementById(elem));
         document.getElementById(elem).classList.toggle('hidden');
       }
       currentModal = elem;
@@ -55,7 +56,10 @@
     },
   // function for page animation and modal script
   startAnimation = function() {
-    const startAnim = setInterval(animateText, 3000);
+    var animText = document.getElementById('text-anim');
+    if(animText) {
+      const startAnim = setInterval(animateText, 3000);
+    }
     const classname = document.getElementsByClassName('trigger');
     Array.from(classname).forEach( function(element) {
       element.addEventListener('click', toggleModal);
