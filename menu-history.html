@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>My meal ticket</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="css/layout.css" />
+</head>
+<body>
+  <div id="wrapper">
+    <div id="header">
+      <ul id="check-it">
+          <!-- this aspect is the home link to the left -->
+          <li class="to-left"><a>Meal-App</a></li> 
+          <!-- This aspect is the list of links to the right-->
+          <li class="to-right point-it">Logout</li>
+          <li class="to-right">Home</li>
+      </ul>
+    </div>
+      <!-- Main content container -->
+      <div id="content">
+        <!-- Jumbotrone header section -->
+        <div id="jumbo2" class="bg"> <!-- the header image would be attached to this div via css -->
+          <div class="row">
+            <div class="col-md-2 main-margin">
+              <div class="card">
+                <h2>Ordered Meals</h2>
+
+                <table style="width:100%">
+                  <tr>
+                    <th>Delicacy name</th>
+                    <th>Delicacy details</th>
+                    <th>Promo/Bonus details</th>
+                    <th>Meal Cost</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                  <tr>
+                    <td>King's Asun</td>
+                    <td>Roasted Assorted goat meat</td>
+                    <td>Free 50ml coke</td>
+                    <td>750 Naira</td>
+                    <td>Not in menu</td>
+                    <td><button class="btn-small btn-sucess trigger" data-modal="settle-order">Settle</button></td>
+                  </tr>
+                  <tr>
+                    <td>King's Asun</td>
+                    <td>Roasted Assorted goat meat</td>
+                    <td>Free 50ml coke</td>
+                    <td>750 Naira</td>
+                    <td>Added to menu</td>
+                    <td><button class="btn-small btn-sucess trigger" data-modal="settle-order">Settle</button></td>
+                  </tr>
+                </table> 
+                <ul id="pagination"></ul>
+              </div>
+            </div>
+            <div class="col-md-2 main-margin">
+                <div class="card">
+                    <div class="presentation">
+                      <h4 class="center-it">Day's summary</h3>
+                      <p>Total meals ordered: 2</p>
+                      <p>Total meals settled: 2</p>
+                      <p>The highest ordered meal: King's Asun</p>
+                      <p>Total revenue: 2000 NGN</p>
+                    </div>
+                <br>
+            </div>
+          </div>
+          <!-- <div class="row">
+              <div class="col-md-3-4">
+                <button class="btn btn-primary text-color to-right" id="check-out">Check us out</button>
+              </div>
+          </div> -->
+        </div>
+      <!-- The footer container -->
+      <div id="footer" class="center-it">
+        <p><span>SENDIT Parcel Delivery Service</span> Copyright 2018</p>
+      </div>
+      </div>
+    </div>
+  </div>
+  <div class="hidden modal col-sm-1 modal-tab" id="settle-order">
+      <div class="row">
+          <div class="modal-design">
+              <h1 class="center-it">Mark as Complete</h1>
+              <p class="point-it dismiss">x</p>
+              <form id="loginForm" method="POST">
+                  <div class="form-group">
+                  <br>
+                    <span>
+                        <button class="btn-small btn-sucess" id="">Confirm</button>
+                        <button class="btn-small btn-danger" id="">Cancel</button>
+                    </span>
+                  </div>
+              </form>
+          </div>
+      </div>
+    </div>
+  <script src="js/app.js"></script> 
+</body>
+</html>
