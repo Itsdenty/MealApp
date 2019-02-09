@@ -274,8 +274,8 @@ tr:nth-child(even) {
   }
   #r-btn{
     position : relative;
-    left: 10px;
-    width: 70%;
+    left: 5px;
+    width: 90%;
   }
   .presentation {
     padding: 5%;
