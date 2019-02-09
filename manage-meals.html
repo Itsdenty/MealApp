@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>My meal ticket</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="css/layout.css" />
+</head>
+<body>
+  <div id="wrapper">
+    <div id="header">
+      <ul id="check-it">
+          <!-- this aspect is the home link to the left -->
+          <li class="to-left"><a>Meal-App</a></li> 
+          <!-- This aspect is the list of links to the right-->
+          <li class="to-right point-it">Logout</li>
+          <li class="to-right">Home</li>
+      </ul>
+    </div>
+      <!-- Main content container -->
+      <div id="content">
+        <!-- Jumbotrone header section -->
+        <div id="jumbo2" class="bg"> <!-- the header image would be attached to this div via css -->
+          <div class="row">
+            <div class="col-sm-1" id="tab">
+              <div class="card">
+                <h2>Manage Meals <span><button class="btn-small btn-primary to-right trigger" id="cr-button" data-modal="create-meal">create meal</button></span></h2>
+
+                <table style="width:100%">
+                  <tr>
+                    <th>Delicacy name</th>
+                    <th>Delicacy details</th>
+                    <th>Promo/Bonus details</th>
+                    <th>Meal Cost</th>
+                    <th>Delivery Cost</th>
+                    <th>Actions</th>
+                  </tr>
+                  <tr>
+                    <td>King's Asun</td>
+                    <td>Roasted Assorted goat meat</td>
+                    <td>Free 50ml coke</td>
+                    <td>750 Naira</td>
+                    <td>100 Naira</td>
+                    <td><button class="btn-small btn-sucess trigger" data-modal="update-meal">update</button> <button class="btn-small btn-danger trigger" data-modal="delete-meal">Delete</button></td>
+                  </tr>
+                  <tr>
+                    <td>King's Asun</td>
+                    <td>Roasted Assorted goat meat</td>
+                    <td>Free 50ml coke</td>
+                    <td>750 Naira</td>
+                    <td>100 Naira</td>
+                    <td><button class="btn-small btn-sucess trigger" data-modal="update-meal">update</button> <button class="btn-small btn-danger trigger" data-modal="delete-meal">Delete</button></td>
+                  </tr>
+                </table> 
+                <ul id="pagination"></ul>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="row">
+              <div class="col-md-3-4">
+                <button class="btn btn-primary text-color to-right" id="check-out">Check us out</button>
+              </div>
+          </div> -->
+        </div>
+      <!-- The footer container -->
+      <div id="footer" class="center-it">
+        <p><span>SENDIT Parcel Delivery Service</span> Copyright 2018</p>
+      </div>
+      </div>
+  </div>
+  <div class="hidden modal col-sm-1 modal-tab-small" id="update-meal">
+    <div class="row">
+        <div class="modal-design">
+            <h1 class="center-it">Update Meal</h1>
+            <p class="point-it dismiss">x</p>
+            <form id="signupForm" method="POST">
+                <div class="form-group">
+                        <label for="first-name">Delicacy Name: </label>
+                        <input class="form-control" name="firstName" type="text" required>
+                </div>
+                <div class="form-group">
+                    <label for="first-name">Delicacy Details: </label>
+                    <input class="form-control" name="firstName" type="text" required>
+                </div>
+                <div class="form-group">
+                    <label for="last-name">Promo/Bonus: </label>
+                    <input class="form-control" name="lastName" type="text" required>
+                </div>
+                <div class="form-group">
+                    <label for="last-name">Meal Cost: </label>
+                    <input class="form-control" name="username" type="text" required>
+                </div>
+                <div class="form-group">
+                    <label for="last-name">Delivery Cost: </label>
+                    <input class="form-control" name="otherNames" type="text" required>
+                </div>
+                <p class="error"></p>
+                <button class="btn-small btn-primary shift-center" id="submit-signup">Update</button>
+            </form>
+        </div>
+    </div>
+  </div>
+  <div class="hidden modal col-sm-1 modal-tab-small" id="create-meal">
+        <div class="row">
+            <div class="modal-design">
+                <h1 class="center-it">Create Meal</h1>
+                <p class="point-it dismiss">x</p>
+                <form id="signupForm" method="POST">
+                    <div class="form-group">
+                            <label for="first-name">Delicacy Name: </label>
+                            <input class="form-control" name="firstName" type="text" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="first-name">Delicacy Details: </label>
+                        <input class="form-control" name="firstName" type="text" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name">Promo/Bonus: </label>
+                        <input class="form-control" name="lastName" type="text" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name">Meal Cost: </label>
+                        <input class="form-control" name="username" type="text" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name">Delivery Cost: </label>
+                        <input class="form-control" name="otherNames" type="text" required>
+                    </div>
+                    <p class="error"></p>
+                    <button class="btn-small btn-primary shift-center" id="submit-signup">Create</button>
+                </form>
+            </div>
+        </div>
+      </div>
+  <div class="hidden modal col-sm-1 modal-tab" id="delete-meal">
+    <div class="row">
+        <div class="modal-design">
+            <h1 class="center-it">Delete Meal</h1>
+            <p class="point-it dismiss">x</p>
+            <form id="loginForm" method="POST">
+                <div class="form-group">
+                <br>
+                <span>
+                    <button class="btn-small btn-sucess" id="">Confirm</button>
+                    <button class="btn-small btn-danger" id="">Cancel</button>
+                </span>
+            </form>
+        </div>
+    </div>
+  </div>
+  <script src="js/app.js"></script> 
+</body>
+</html>
