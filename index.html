@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>My meal ticket</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="css/layout.css" />
+</head>
+<body>
+  <div id="wrapper">
+    <div id="header">
+      <ul id="check-it">
+          <!-- this aspect is the home link to the left -->
+          <li class="to-left"><a>Meal-App</a></li> 
+          <!-- This aspect is the list of links to the right-->
+          <li class="to-right trigger point-it" data-modal="login">Login</li>
+          <li class="to-right trigger point-it" data-modal="signup">Signup</li>
+          <li class="to-right">Home</li>
+      </ul>
+    </div>
+      <!-- Main content container -->
+      <div id="content">
+        <!-- Jumbotrone header section -->
+        <div id="jumbo" class="bg"> <!-- the header image would be attached to this div via css -->
+          <div class="row">
+            <h1 class="col-md-4 to-left main-margin" id="move-down">MealApp</h1>
+            <h3 class="col-md-1 to-left drop-down main-margin drop-sm" id="text-anim">Delicious meals you can't resist</h3>
+          </div>
+          <div class="row">
+              <div class="col-md-3-4">
+                <button class="btn btn-primary text-color to-right" id="check-out">Check us out</button>
+              </div>
+          </div>
+        </div>
+        <div class="hidden modal col-sm-1" id="signup">
+          <div class="row">
+              <div class="modal-design">
+                  <h1 class="center-it">Signup Form</h1>
+                  <p class="point-it dismiss">x</p>
+                  <form id="signupForm" method="POST">
+                      <div class="form-group">
+                          <label for="first-name">First Name: </label>
+                          <input class="form-control" name="firstName" type="text" required>
+                      </div>
+                      <div class="form-group">
+                          <label for="last-name">Last Name: </label>
+                          <input class="form-control" name="lastName" type="text" required>
+                      </div>
+                      <div class="form-group">
+                          <label for="last-name">Username: </label>
+                          <input class="form-control" name="username" type="text" required>
+                      </div>
+                      <div class="form-group">
+                          <label for="last-name">Other Names: </label>
+                          <input class="form-control" name="otherNames" type="text" required>
+                      </div>
+                      <div class="form-group">
+                          <label for="email">Your Email: </label>
+                          <input class="form-control" name="email" type="text" required>
+                      </div>
+                      <div class="form-group">
+                          <label for="message">User type</label>
+                          <select class="form-control" name="isAdmin" required>
+                            <option value="false">User</option>
+                            <option value="true">Admin</option>
+                          </select>
+                      </div>
+                      <div class="form-group">
+                          <label for="email">Password: </label>
+                          <input class="form-control" name="password" type="password" required>
+                      </div>
+                      <div class="form-group">
+                          <label for="email">Confirm Password: </label>
+                          <input class="form-control" name="confirmPassword" type="password" required>
+                      </div>
+                      <p class="error"></p>
+                      <button class="btn-small btn-primary shift-center" id="submit-signup">Signup</button>
+                  </form>
+              </div>
+          </div>
+      </div>
+      <div class="hidden modal col-sm-1" id="login">
+          <div class="row">
+              <div class="modal-design">
+                  <h1 class="center-it">Login Form</h1>
+                  <p class="point-it dismiss">x</p>
+                  <form id="loginForm" method="POST">
+                      <div class="form-group">
+                          <label for="email">Your Email: </label>
+                          <input class="form-control" name="email" type="text">
+                      </div>
+                      <div class="form-group">
+                          <label for="email">Password: </label>
+                          <input class="form-control" name="password" type="password">
+                      </div>
+                      <br>
+                      <button class="btn-small btn-primary shift-center" id="submit-login">Login</button>
+                  </form>
+              </div>
+          </div>
+      </div>
+      <!-- The footer container -->
+      <div id="footer" class="center-it">
+        <p><span>SENDIT Parcel Delivery Service</span> Copyright 2018</p>
+      </div>
+      </div>
+  </div>
+  <script src="js/app.js"></script> 
+</body>
+</html>
