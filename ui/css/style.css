@@ -154,6 +154,8 @@ display: none;
   /* modal generic styles */
 .modal-design {
     margin: 0 auto;
+    width: 70%;
+    padding: 5%;
   }
   .modal-design>p {
     position: absolute;
@@ -172,14 +174,18 @@ display: none;
     left: 70px;
     width: 50%;
   }
+  .modal-tab{
+    margin-top: 15%;
+  }
+  .modal-tab-small {
+    margin-top: 5%;
+  }
 
   #login {
     margin-top: 15%;
   }
-  /* #signup {
-    margin-top: -2%;
-  } */
-
+  
+  /* Form and input styles */
   .form-group {
     padding: 3px;
   }
@@ -203,9 +209,7 @@ display: none;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   background-color: white;
   padding: 3%;
-  /* margin: 5%; */
 }
-d
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
@@ -260,22 +264,18 @@ tr:nth-child(even) {
     align-content:center;
     flex-direction:column;
   }
+
+  /* miscellaneous style*/
   #tab {
     position: relative;
     top: 50px;
     width: 90%;
     left: 50px;
   }
-  .modal-tab{
-    margin-top: 15%;
-  }
-  .modal-tab-small {
-    margin-top: 5%;
-  }
   #r-btn{
     position : relative;
-    left: 10px;
-    width: 70%;
+    left: 5px;
+    width: 90%;
   }
   .presentation {
     padding: 5%;
