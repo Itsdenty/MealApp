@@ -1,0 +1,45 @@
+{
+  "name": "mealapp",
+  "version": "1.0.0",
+  "description": "For meal application challenge",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test:dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Itsdenty/MealApp.git"
+  },
+  "keywords": [
+    "meals",
+    "apps",
+    "travis",
+    "tdd",
+    "coveralls",
+    "codeclimate",
+    "swagger",
+    "andela"
+  ],
+  "author": "Abd-afeez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Itsdenty/MealApp/issues"
+  },
+  "homepage": "https://github.com/Itsdenty/MealApp#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "bcrypt": "^3.0.0",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "dotenv": "^6.0.0",
+    "express-validator": "^5.3.0",
+    "har-validator": "^5.1.3",
+    "jsonwebtoken": "^8.3.0",
+    "mailgun-js": "^0.22.0",
+    "moment": "^2.22.2",
+    "morgan": "^1.9.0",
+    "path": "^0.12.7",
+    "pg": "^7.4.3",
+    "swagger-jsdoc": "^3.0.2"
+  }
+}
