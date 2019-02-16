@@ -7,6 +7,8 @@
     "build": "rimraf dist/ && babel ./server --out-dir dist/ --ignore ./tests,./public, --copy-files",
     "start": "npm run build && node dist/index.js",
     "sequelize": "./node_modules/.bin/babel-node ./node_modules/.bin/sequelize $*",
+    "migrate": "npm run sequelize db:migrate",
+    "seed": "npm run sequelize db:seed:all",
     "test": "npm run test:dev"
   },
   "repository": {
