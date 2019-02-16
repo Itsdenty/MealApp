@@ -1,0 +1,20 @@
+language: node_js
+env:
+  global:
+    - CC_TEST_REPORTER_ID=5c60cdeb9b18a8be8f02ab0a6907527cb39e2335f75f179828f4bc4b3178c0b7
+    - JWT_SECRET=cool-secret;
+    - MAILGUN_API_KEY=key-6392b1150b892cb0d46e99ce06524609
+node_js:
+ - "8.12.0"
+before_script:
+  - psql -c 'CREATE DATABASE travis;' -U postgres
+  - yarn global add nyc
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+script:
+ - npm test
+ - npm run coveralls
+ - npm run coverage
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
