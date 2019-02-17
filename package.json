@@ -8,8 +8,12 @@
     "start": "npm run build && node dist/index.js",
     "sequelize": "./node_modules/.bin/babel-node ./node_modules/.bin/sequelize $*",
     "migrate": "npm run sequelize db:migrate",
+    "migrate-test": "NODE_ENV=test npm run sequelize db:migrate",
     "seed": "npm run sequelize db:seed:all",
-    "test": "npm run test:dev"
+    "seed-test": "NODE_ENV=test npm run sequelize db:seed:all",
+    "test": "npm run migrate && npm run seed && nyc mocha server/tests/*.test.js --exit --compilers js:babel-register",
+    "test-dev": "NODE_ENV=test nyc mocha --timeout 20000 server/tests/*.test.js --exit --compilers js:babel-register",
+    "test": "NODE_ENV=test nyc mocha --timeout 20000 server/tests/*.test.js --exit --compilers js:babel-register"
   },
   "repository": {
     "type": "git",

@@ -14,7 +14,7 @@ export default (sequelize, DataTypes) => {
       foreignKey: 'orderId',
       as: 'Order'
     });
-    OrderItem.belongsTo(models.Menu, {
+    OrderItem.belongsTo(models.Meal, {
       foreignKey: 'menuId',
       as: 'menu'
     });

@@ -9,7 +9,11 @@ const role = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     displayName: DataTypes.STRING,
     description: DataTypes.STRING,
-    permissions: DataTypes.ARRAY
+    permissions: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      allowNull: true,
+      defaultValue: []
+    }
   }, {
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',

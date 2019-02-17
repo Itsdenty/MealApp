@@ -14,7 +14,8 @@ export default {
         type: Sequelize.STRING
       },
       email: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        unique: true
       },
       address: {
         type: Sequelize.STRING
@@ -22,7 +23,11 @@ export default {
       phoneNumber: {
         type: Sequelize.STRING
       },
-      userId: {
+      permissions: {
+        type: Sequelize.ARRAY(Sequelize.TEXT)
+      },
+      password: Sequelize.STRING,
+      roleId: {
         type: Sequelize.INTEGER,
         references: {
           model: 'Roles',

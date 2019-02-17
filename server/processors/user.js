@@ -1,5 +1,7 @@
 import database from '../database/models';
 import createToken from '../utils/create-token';
+import harshPassword from '../utils/hash-password';
+import validPassword from '../utils/valid-password';
 
 const secretKey = process.env.JWT_SECRET;
 
@@ -15,22 +17,37 @@ class userProcessor {
    */
   static async createUser(user) {
     try {
-      const createdUser = await database.User.create(user);
-      // create the token after all the inputs are certified ok
-      const {
-          id, firstName, lastName, email
-        } = createdUser,
-        authToken = createToken.token({
-          id, firstName, lastName, email
-        }, secretKey),
-        resp = {
-          message: 'User created successfully',
-          user: {
+      user.roleId = user.roleId ? user.roleId : 3;
+      let Role = [];
+      Role = await database.Role.findById(user.roleId);
+
+      // populate the default user permissions based on his roles
+      user.permissions = Role.permissions;
+
+      // harsh password
+      user.password = harshPassword(user.password);
+      try {
+        const createdUser = await database.User.create(user),
+          // create the token after all the inputs are certified ok
+          {
             id, firstName, lastName, email
-          },
-          token: authToken,
-        };
-      return resp;
+          } = createdUser,
+          authToken = createToken.token({
+            id, firstName, lastName, email
+          }, secretKey),
+          resp = {
+            message: 'User created successfully',
+            user: {
+              id, firstName, lastName, email
+            },
+            token: authToken,
+          };
+        return resp;
+      } catch (e) {
+        // create and throw 500 error
+        const err = { error: 'and error occured' };
+        throw err;
+      }
     } catch (e) {
       // create and throw 500 error
       const err = { error: 'and error occured or user already exists' };
@@ -50,7 +67,7 @@ class userProcessor {
       const user = await database.User.findOne({ where: { email: login.email } });
       if (!user) {
         throw new Error('wrong login credentials!');
-      } else if (!user.validPassword(login.validPassword)) {
+      } else if (!validPassword(login.password, user.password)) {
         throw new Error('invalid password');
       } else {
         const authUser = user,

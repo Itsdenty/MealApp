@@ -17,7 +17,7 @@ export default {
         type: Sequelize.STRING
       },
       permissions: {
-        type: Sequelize.ARRAY(Sequelize.STRING)
+        type: Sequelize.ARRAY(Sequelize.TEXT)
       },
       createdAt: {
         allowNull: false,
