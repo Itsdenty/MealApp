@@ -19,7 +19,6 @@ class mealProcessor {
         };
       return resp;
     } catch (e) {
-      console.log(e);
       // create and throw 500 error
       const err = { error: 'and error occured' };
       throw err;
@@ -34,7 +33,7 @@ class mealProcessor {
    */
   static async getMenu(userId) {
     try {
-      const meals = await database.Meal.findAll({ where: { userId } }),
+      const meals = await database.Meal.findAll({ where: { userId, isMenu: true } }),
         resp = {
           meals
         };
@@ -54,7 +53,7 @@ class mealProcessor {
    */
   static async deleteMenu(id) {
     try {
-      const meal = await database.Meal.destroy({ where: { id } }),
+      const meal = await database.Meal.update({ isMenu: false }, { where: { id } }),
         resp = {
           message: 'Meal deleted successfully',
           meal

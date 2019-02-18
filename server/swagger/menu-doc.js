@@ -34,12 +34,6 @@
  *       - Bearer: []
  *     produces:
  *       - application/
- *     parameters:
- *       - name: id
- *         description: Meal's id
- *         in: path
- *         required: true
- *         type: string
  *     responses:
  *       200:
  *         description: caterer menu data
