@@ -200,3 +200,42 @@
  *         schema:
  *           $ref: '#/definitions/ErrorObject'
  */
+/**
+ * @swagger
+ * /meal/{id}:
+ *   delete:
+ *     tags:
+ *       - Meal
+ *     description: Delete a single meal object
+ *     security:
+ *       - Bearer: []
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: id
+ *         description: Meal's id
+ *         in: path
+ *         required: true
+ *         type: string
+ *     responses:
+ *       200:
+ *         description: Meal successfully deleted
+ *         schema:
+ *           $ref: '#/definitions/MealResponse'
+ *       500:
+ *         description: Server error exists
+ *         schema:
+ *           $ref: '#/definitions/ErrorObject'
+ *       400:
+ *         description: Validation error exists
+ *         schema:
+ *           $ref: '#/definitions/ErrorObject'
+ *       401:
+ *         description: Authentication error exists
+ *         schema:
+ *           $ref: '#/definitions/ErrorObject'
+ *       403:
+ *         description: Authourization error exists
+ *         schema:
+ *           $ref: '#/definitions/ErrorObject'
+ */
