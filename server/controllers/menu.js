@@ -37,8 +37,8 @@ class mealController {
   static async getMenu(req, res) {
     try {
       const userId = req.decodedToken.id;
-      const getMeals = await processor.getMeals(userId);
-      res.send(transformer.transformResponse(200, getMeals));
+      const getMenu = await processor.getMenu(userId);
+      res.send(transformer.transformResponse(200, getMenu));
     } catch (error) {
       res.status(500).json(transformer.transformResponse(500, error.error));
     }
@@ -55,8 +55,8 @@ class mealController {
    */
   static async deleteMenu(req, res) {
     try {
-      const deleteMeal = await processor.deleteMeal(req.params.id);
-      res.send(transformer.transformResponse(200, deleteMeal));
+      const deleteMenu = await processor.deleteMenu(req.params.id);
+      res.send(transformer.transformResponse(200, deleteMenu));
     } catch (error) {
       res.status(500).json(transformer.transformResponse(500, error.error));
     }

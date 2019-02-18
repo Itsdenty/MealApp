@@ -7,5 +7,6 @@ import permission from '../../../middlewares/permissions/menu';
 
 const router = express.Router();
 router.patch('/:id', jwtVerify.verifyToken, permission.canCreate, validator.checkId, controller.createMenu);
-
+router.delete('/:id', jwtVerify.verifyToken, permission.canCreate, validator.checkId, controller.deleteMenu);
+router.get('/', jwtVerify.verifyToken, permission.canView, controller.getMenu);
 export default router;
