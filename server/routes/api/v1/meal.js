@@ -7,6 +7,6 @@ import permission from '../../../middlewares/permissions/meal';
 
 const router = express.Router();
 router.post('/', jwtVerify.verifyToken, permission.canCreate, validator.create, controller.createMeal);
-// router.post('/login', validator.login, controller.loginUser);
+router.get('/', jwtVerify.verifyToken, permission.canView, controller.getMeals);
 
 export default router;

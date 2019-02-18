@@ -19,7 +19,7 @@ class userProcessor {
     try {
       user.roleId = user.roleId ? user.roleId : 3;
       let Role = [];
-      Role = await database.Role.findById(user.roleId);
+      Role = await database.Role.findByPK(user.roleId);
 
       // populate the default user permissions based on his roles
       user.permissions = Role.permissions;
