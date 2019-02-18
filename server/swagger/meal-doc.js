@@ -126,3 +126,32 @@
  *         schema:
  *           $ref: '#/definitions/ErrorObject'
  */
+/**
+ * @swagger
+ * /meal:
+ *   get:
+ *     tags:
+ *       - Meal
+ *     description: Returns all caterer's meals
+ *     security:
+ *       - Bearer: []
+ *     produces:
+ *       - application/json
+ *     responses:
+ *       200:
+ *         description: caterer meals' data
+ *         schema:
+ *           $ref: '#/definitions/ResponseObjectMeal'
+ *       500:
+ *         description: Server error exists
+ *         schema:
+ *           $ref: '#/definitions/ErrorObject'
+ *       401:
+ *         description: Authentication error exists
+ *         schema:
+ *           $ref: '#/definitions/ErrorObject'
+ *       403:
+ *         description: Authourization error exists
+ *         schema:
+ *           $ref: '#/definitions/ErrorObject'
+ */
