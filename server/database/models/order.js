@@ -24,7 +24,7 @@ export default (sequelize, DataTypes) => {
       foreignKey: 'userId',
       as: 'User'
     });
-    Order.hasMany(models.OrdeItem, {
+    Order.hasMany(models.OrderItem, {
       foreignKey: 'orderId',
       as: 'orderItems'
     });

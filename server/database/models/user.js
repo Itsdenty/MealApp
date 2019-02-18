@@ -10,9 +10,18 @@ const user = (sequelize, DataTypes) => {
     },
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
-    email: DataTypes.STRING,
+    email: {
+      type: DataTypes.STRING,
+      unique: true
+    },
     address: DataTypes.STRING,
-    phoneNumber: DataTypes.STRING
+    phoneNumber: DataTypes.STRING,
+    password: DataTypes.STRING,
+    permissions: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      allowNull: true,
+      defaultValue: []
+    }
   }, {
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
@@ -20,10 +29,11 @@ const user = (sequelize, DataTypes) => {
     timestamps: true,
     paranoid: true,
     underscored: true,
-    beforeCreate: async (usr) => {
-      const salt = await bcrypt.genSalt(15);
-      user.password = await bcrypt.hash(usr.password, salt);
-    },
+    // beforeCreate: async (usr) => {
+    //   console.log('got here');
+    //   const salt = await bcrypt.genSalt(15);
+    //   user.password = await bcrypt.hash(usr.password, salt);
+    // }
   });
   User.associate = (models) => {
     User.belongsTo(models.Role, {
@@ -35,9 +45,10 @@ const user = (sequelize, DataTypes) => {
       as: 'Meals'
     });
   };
-  User.prototype.validPassword = async function validPassword(password) {
-    bcrypt.compare(password, this.password);
-  };
+//   User.prototype.validPassword = async function validPassword(password) {
+//     const isValid = await bcrypt.compare(password, this.password);
+//     return isValid;
+//   };
   return User;
 };
 

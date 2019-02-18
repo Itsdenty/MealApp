@@ -1,5 +1,6 @@
 import dotenv from 'dotenv';
 import { Op } from 'sequelize';
+import dbConfig from './config';
 
 dotenv.config();
 const Database = {};
@@ -39,11 +40,10 @@ const operatorsAliases = {
   $values: Op.values,
   $col: Op.col
 };
-
 Database.postgres = {
-  database: process.env.POSTGRES_DATABASE,
-  username: process.env.POSTGRES_USERNAME,
-  password: process.env.POSTGRES_PASSWORD,
+  database: dbConfig[process.env.NODE_ENV].database,
+  username: dbConfig[process.env.NODE_ENV].username,
+  password: dbConfig[process.env.NODE_ENV].password,
   options: {
     pool: {
       max: 5,
@@ -51,13 +51,12 @@ Database.postgres = {
       idle: 5000,
       evict: 5000
     },
-    host: process.env.POSTGRES_HOST,
+    host: dbConfig[process.env.NODE_ENV].host,
     dialect: 'postgres',
     operatorsAliases,
     timezone: 'Africa/Lagos'
   }
 };
-
 Database.currentSQL = Database.postgres;
 
 export default Database;
