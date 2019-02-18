@@ -50,5 +50,25 @@ class mealController {
       res.status(500).json(transformer.transformResponse(500, error.error));
     }
   }
+
+  /**
+   *
+   *
+   * @static
+   * @param {*} req
+   * @param {*} res
+   * @memberof mealController
+   * @returns {*} createMeal
+   */
+  static async updateMeal(req, res) {
+    const { meal } = req.body,
+      userId = req.decodedToken.id;
+    try {
+      const updateMeal = await processor.updateMeal(userId, req.params.id, meal);
+      res.send(transformer.transformResponse(200, updateMeal));
+    } catch (error) {
+      res.status(500).json(transformer.transformResponse(500, error.error));
+    }
+  }
 }
 export default mealController;
