@@ -2,6 +2,7 @@ import express from 'express';
 import swaggerJSDoc from 'swagger-jsdoc';
 import user from './user';
 import meal from './meal';
+import menu from './menu';
 
 
 const router = express.Router();
@@ -15,7 +16,7 @@ const swaggerDefinition = {
     description: 'Api documentation for Andela vlf challenge.',
   },
   host: 'localhost:3100',
-  basePath: '/api/v1',
+  basePath: '/api/v1'
 };
 
 
@@ -43,6 +44,7 @@ router.get('/swagger.json', (req, res) => {
 // use the user route
 router.use('/user', user);
 router.use('/meal', meal);
+router.use('/menu', menu);
 
 // api v1 routes
 router.get('/', (req, res) => {
