@@ -30,10 +30,10 @@ class userProcessor {
         const createdUser = await database.User.create(user),
           // create the token after all the inputs are certified ok
           {
-            id, firstName, lastName, email
+            id, firstName, lastName, email, permissions
           } = createdUser,
           authToken = createToken.token({
-            id, firstName, lastName, email
+            id, firstName, lastName, email, permissions
           }, secretKey),
           resp = {
             message: 'User created successfully',
@@ -72,11 +72,11 @@ class userProcessor {
       } else {
         const authUser = user,
           {
-            id, firstName, lastName, email
+            id, firstName, lastName, email, permissions
           } = authUser,
 
           authToken = createToken.token({
-            id, firstName, lastName, email
+            id, firstName, lastName, email, permissions
           }, secretKey),
           resp = {
             message: 'User loggedin successfully',

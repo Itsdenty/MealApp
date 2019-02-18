@@ -1,6 +1,8 @@
 import express from 'express';
 import swaggerJSDoc from 'swagger-jsdoc';
 import user from './user';
+import meal from './meal';
+
 
 const router = express.Router();
 
@@ -40,6 +42,7 @@ router.get('/swagger.json', (req, res) => {
 
 // use the user route
 router.use('/user', user);
+router.use('/meal', meal);
 
 // api v1 routes
 router.get('/', (req, res) => {
