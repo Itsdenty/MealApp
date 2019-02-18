@@ -66,5 +66,26 @@ class mealProcessor {
       throw err;
     }
   }
+
+  /**
+   * @description - Creates a new user in the app and assigns a token to them
+   * @param{Object} id - api request
+   * @param{Object} res - route response
+   * @return{json} the registered user's detail
+   */
+  static async deleteMeal(id) {
+    try {
+      const meal = await database.Meal.destroy({ where: { id } }),
+        resp = {
+          message: 'Meal deleted successfully',
+          meal
+        };
+      return resp;
+    } catch (e) {
+      // create and throw 500 error
+      const err = { error: 'and error occured' };
+      throw err;
+    }
+  }
 }
 export default mealProcessor;

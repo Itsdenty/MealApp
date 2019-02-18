@@ -70,5 +70,23 @@ class mealController {
       res.status(500).json(transformer.transformResponse(500, error.error));
     }
   }
+
+  /**
+   *
+   *
+   * @static
+   * @param {*} req
+   * @param {*} res
+   * @memberof mealController
+   * @returns {*} getMeals
+   */
+  static async deleteMeal(req, res) {
+    try {
+      const deleteMeal = await processor.deleteMeal(req.params.id);
+      res.send(transformer.transformResponse(200, deleteMeal));
+    } catch (error) {
+      res.status(500).json(transformer.transformResponse(500, error.error));
+    }
+  }
 }
 export default mealController;

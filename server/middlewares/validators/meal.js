@@ -16,9 +16,8 @@ Validator.create = (req, res, next) => {
       Transformer.transformExpressValidationErrors(errors), errors)));
 };
 
-Validator.login = (req, res, next) => {
-  req.checkBody('login.email', 'please supply a valid email').notEmpty().isEmailV2();
-  req.checkBody('login.password', 'Please supply a valid password').isMinLen(6).isMaxLen(50);
+Validator.delete = (req, res, next) => {
+  req.checkParams('id', 'Please enter a valid meal id').notEmpty().isDecimal();
   req.asyncValidationErrors()
     .then(next)
     .catch(errors => res.status(400).json(Transformer.transformResponse(400,
@@ -26,7 +25,7 @@ Validator.login = (req, res, next) => {
 };
 
 Validator.update = (req, res, next) => {
-  req.checkParams('id', 'Please enter a valid parcel id').notEmpty().isDecimal();
+  req.checkParams('id', 'Please enter a valid meal id').notEmpty().isDecimal();
   req.checkBody('meal.name', 'Please enter a valid meal name').optional().isMinLen(5).isMaxLen(25);
   req.checkBody('meal.description', 'Please supply a valid description').optional().isMinLen(10).isMaxLen(85);
   req.checkBody('meal.price', 'Please supply valid price').optional().isNumber();
