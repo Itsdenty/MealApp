@@ -16,10 +16,16 @@ export default {
       type: {
         type: Sequelize.STRING
       },
+      promo: {
+        type: Sequelize.STRING
+      },
       isMenu: {
         type: Sequelize.BOOLEAN
       },
       orderedTimes: {
+        type: Sequelize.INTEGER
+      },
+      price: {
         type: Sequelize.INTEGER
       },
       userId: {

@@ -10,6 +10,8 @@ const meal = (sequelize, DataTypes) => {
     description: DataTypes.STRING,
     type: DataTypes.STRING,
     isMenu: DataTypes.BOOLEAN,
+    promo: DataTypes.STRING,
+    price: DataTypes.INTEGER,
     orderedTimes: DataTypes.INTEGER
   }, {
     createdAt: 'createdAt',

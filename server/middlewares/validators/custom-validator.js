@@ -1,5 +1,6 @@
 const CustomValidators = {},
-  statuses = ['pending', 'settled'];
+  statuses = ['pending', 'settled'],
+  mealTypes = ['continental', 'african', 'veggie'];
 
 CustomValidators.isMinLen = (input, val) => input.length >= val;
 
@@ -21,7 +22,10 @@ CustomValidators.isEmailV2 = (email) => {
   return re.test(email);
 };
 
+CustomValidators.isNumber = input => /^-?[\d.]+(?:e-?\d+)?$/.test(input);
+
 CustomValidators.isArray = input => Array.isArray(input);
 CustomValidators.isStatusType = input => statuses.includes(input.toLowerCase());
+CustomValidators.isMealType = input => mealTypes.includes(input.toLowerCase());
 CustomValidators.isIdType = input => (input + 1) > 0;
 export default CustomValidators;
