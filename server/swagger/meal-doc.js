@@ -155,3 +155,48 @@
  *         schema:
  *           $ref: '#/definitions/ErrorObject'
  */
+/**
+ * @swagger
+ * /meal/{id}:
+ *   put:
+ *     tags:
+ *       - Meal
+ *     description: Creates a new meal
+ *     security:
+ *       - Bearer: []
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: id
+ *         description: Meal's id
+ *         in: path
+ *         required: true
+ *         type: string
+ *       - name: meal
+ *         description: meal creation credentials
+ *         in: body
+ *         required: true
+ *         schema:
+ *           $ref: '#/definitions/MealModel'
+ *     responses:
+ *       200:
+ *         description: Successfully created
+ *         schema:
+ *           $ref: '#/definitions/MealResponse'
+ *       500:
+ *         description: Server error exists
+ *         schema:
+ *           $ref: '#/definitions/ErrorObject'
+ *       400:
+ *         description: Validation error exists
+ *         schema:
+ *           $ref: '#/definitions/ErrorObject'
+ *       401:
+ *         description: Authentication error exists
+ *         schema:
+ *           $ref: '#/definitions/ErrorObject'
+ *       403:
+ *         description: Authourization error exists
+ *         schema:
+ *           $ref: '#/definitions/ErrorObject'
+ */
