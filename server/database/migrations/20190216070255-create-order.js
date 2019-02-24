@@ -16,16 +16,30 @@ export default {
       deliveryTime: {
         type: Sequelize.DATE
       },
-      totalQuantity: {
-        type: Sequelize.INTEGER
+      isCancelled: {
+        type: Sequelize.BOOLEAN
       },
-      totalPrice: {
-        type: Sequelize.INTEGER
+      isDelivered: {
+        type: Sequelize.BOOLEAN
       },
       userId: {
         type: Sequelize.INTEGER,
         references: {
           model: 'Users',
+          key: 'id'
+        },
+      },
+      catererId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Users',
+          key: 'id'
+        },
+      },
+      mealId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Meals',
           key: 'id'
         },
       },

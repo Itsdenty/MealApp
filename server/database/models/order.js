@@ -9,8 +9,8 @@ export default (sequelize, DataTypes) => {
     ref: DataTypes.STRING,
     orderTime: DataTypes.DATE,
     deliveryTime: DataTypes.DATE,
-    totalQuantity: DataTypes.INTEGER,
-    totalPrice: DataTypes.INTEGER
+    isCancelled: DataTypes.BOOLEAN,
+    isDelivered: DataTypes.BOOLEAN
   }, {
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
@@ -24,9 +24,13 @@ export default (sequelize, DataTypes) => {
       foreignKey: 'userId',
       as: 'User'
     });
-    Order.hasMany(models.OrderItem, {
-      foreignKey: 'orderId',
-      as: 'orderItems'
+    Order.belongsTo(models.User, {
+      foreignKey: 'catererId',
+      as: 'Caterer'
+    });
+    Order.belongsTo(models.Meal, {
+      foreignKey: 'mealId',
+      as: 'Meal'
     });
   };
   return Order;

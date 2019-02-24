@@ -26,7 +26,7 @@ const meal = (sequelize, DataTypes) => {
       foreignKey: 'userId',
       as: 'Caterer'
     });
-    Meal.hasMany(models.OrderItem, {
+    Meal.hasMany(models.Order, {
       foreignKey: 'mealId',
       as: 'Orders'
     });
