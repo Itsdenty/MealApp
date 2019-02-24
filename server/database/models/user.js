@@ -1,5 +1,3 @@
-import bcrypt from 'bcrypt';
-
 const user = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
     id: {
@@ -45,10 +43,6 @@ const user = (sequelize, DataTypes) => {
       as: 'Meals'
     });
   };
-//   User.prototype.validPassword = async function validPassword(password) {
-//     const isValid = await bcrypt.compare(password, this.password);
-//     return isValid;
-//   };
   return User;
 };
 

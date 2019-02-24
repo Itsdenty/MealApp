@@ -3,7 +3,7 @@ import swaggerJSDoc from 'swagger-jsdoc';
 import user from './user';
 import meal from './meal';
 import menu from './menu';
-
+import order from './order';
 
 const router = express.Router();
 
@@ -45,6 +45,7 @@ router.get('/swagger.json', (req, res) => {
 router.use('/user', user);
 router.use('/meal', meal);
 router.use('/menu', menu);
+router.use('/order', order);
 
 // api v1 routes
 router.get('/', (req, res) => {
