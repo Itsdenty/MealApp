@@ -11,6 +11,7 @@
     "migrate-test": "NODE_ENV=test npm run sequelize db:migrate",
     "seed": "npm run sequelize db:seed:all",
     "seed-test": "NODE_ENV=test npm run sequelize db:seed:all",
+    "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test",
     "test": "npm run migrate && npm run seed && nyc mocha --timeout 20000 server/tests/*.test.js --exit --compilers js:babel-register",
     "test-dev": "NODE_ENV=test nyc mocha --timeout 20000 server/tests/*.test.js --exit --compilers js:babel-register"
   },
