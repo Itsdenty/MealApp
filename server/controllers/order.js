@@ -1,20 +1,21 @@
 import transformer from '../utils/transformer';
 import processor from '../processors/order';
+import PermissionList from '../config/permissions';
 
 /**
  *
  *
  * @class userController
  */
-class mealController {
+class orderController {
   /**
    *
    *
    * @static
    * @param {*} req
    * @param {*} res
-   * @memberof mealController
-   * @returns {*} createMeal
+   * @memberof orderController
+   * @returns {*} createOrder
    */
   static async createOrder(req, res) {
     const { order } = req.body;
@@ -37,14 +38,15 @@ class mealController {
    * @static
    * @param {*} req
    * @param {*} res
-   * @memberof mealController
-   * @returns {*} getMeals
+   * @memberof orderController
+   * @returns {*} getOrders
    */
-  static async getMeals(req, res) {
+  static async getOrders(req, res) {
     try {
-      const userId = req.decodedToken.id;
-      const getMeals = await processor.getMeals(userId);
-      res.send(transformer.transformResponse(200, getMeals));
+      const userId = req.decodedToken.id,
+        isAdmin = req.decodedToken.permissions.includes(PermissionList.WRITE_MEAL) || false;
+      const getOrders = await processor.getOrders(userId, isAdmin);
+      res.send(transformer.transformResponse(200, getOrders));
     } catch (error) {
       res.status(500).json(transformer.transformResponse(500, error.error));
     }
@@ -56,7 +58,7 @@ class mealController {
    * @static
    * @param {*} req
    * @param {*} res
-   * @memberof mealController
+   * @memberof orderController
    * @returns {*} createMeal
    */
   static async updateMeal(req, res) {
@@ -76,7 +78,7 @@ class mealController {
    * @static
    * @param {*} req
    * @param {*} res
-   * @memberof mealController
+   * @memberof orderController
    * @returns {*} getMeals
    */
   static async deleteMeal(req, res) {
@@ -88,4 +90,4 @@ class mealController {
     }
   }
 }
-export default mealController;
+export default orderController;
