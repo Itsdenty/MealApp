@@ -1,4 +1,3 @@
-// import dbconfig from './database';
 require('dotenv').config();
 
 module.exports = {
