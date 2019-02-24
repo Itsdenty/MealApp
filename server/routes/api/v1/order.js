@@ -7,7 +7,7 @@ import permission from '../../../middlewares/permissions/order';
 
 const router = express.Router();
 router.post('/', jwtVerify.verifyToken, permission.canCreate, validator.create, controller.createOrder);
-// router.get('/', jwtVerify.verifyToken, permission.canView, controller.getOrders);
+router.get('/', jwtVerify.verifyToken, permission.canView, controller.getOrders);
 // router.put('/:id', jwtVerify.verifyToken, permission.canView
 // validator.update, controller.updateOrder);
 

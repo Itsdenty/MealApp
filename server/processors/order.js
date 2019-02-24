@@ -37,12 +37,18 @@ class orderProcessor {
   /**
    * @description - Creates a new user in the app and assigns a token to them
    * @param{Object} userId - api request
+   * @param{Object} isAdmin - api request
    * @param{Object} res - route response
    * @return{json} the registered user's detail
    */
-  static async getMeals(userId) {
+  static async getOrders(userId, isAdmin) {
+    console.log('cool');
+    let query = { where: { userId } };
+    if (isAdmin) {
+      query = { where: { catererId: userId } };
+    }
     try {
-      const meals = await database.Meal.findAll({ where: { userId } }),
+      const meals = await database.Meal.findAll(query),
         resp = {
           meals
         };
