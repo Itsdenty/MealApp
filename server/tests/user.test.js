@@ -15,20 +15,20 @@ function generateDummyName() {
   }
   return fstring;
 }
-
-
+const generateRandomNumber = (min, max) => Math.random() * (max - min) + min,
+  phone = parseInt(generateRandomNumber(1111, 9999), 10);
 const
   emailFrag1 = generateDummyName(),
   emailFrag2 = emailFrag1.substring(0, 4),
   email = `${emailFrag1}@${emailFrag2}.com`;
 
-
+console.log(phone);
 describe('User API endpoints intgeration Tests', () => {
   const user = {
     user: {
       firstName: 'test-firstname',
       lastName: 'test-lastname',
-      phoneNumber: '0806547893',
+      phoneNumber: `0806547${phone}`,
       roleId: 2,
       password: 'password1234',
       address: 'No 32, peace avenue lagos',

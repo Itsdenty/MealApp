@@ -16,6 +16,18 @@ export default {
       password: hashPassword('oloreofe'),
       createdAt: now,
       updatedAt: now
+    },
+    {
+      firstName: 'John',
+      lastName: 'Ortega',
+      email: 'museguide@gmail.com',
+      phoneNumber: '08167558014',
+      address: 'No 30, Victoria Street, Ojota Lagos.',
+      permissions: [permissions.WRITE_ORDER, permissions.READ_MENU, permissions.READ_ORDER],
+      roleId: 1,
+      password: hashPassword('oloreofe'),
+      createdAt: now,
+      updatedAt: now
     }], {});
   },
 
