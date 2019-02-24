@@ -22,7 +22,6 @@ const
   emailFrag2 = emailFrag1.substring(0, 4),
   email = `${emailFrag1}@${emailFrag2}.com`;
 
-console.log(phone);
 describe('User API endpoints intgeration Tests', () => {
   const user = {
     user: {
@@ -107,7 +106,6 @@ describe('User API endpoints intgeration Tests', () => {
       request(app).post('/api/v1/user/signup').send(user400)
         .end((err, res) => {
           if (err) return done(err);
-          console.log(res.body);
           expect(res.statusCode).to.equal(400);
           expect(res.body).to.be.an('object');
           expect(res.body.error).to.have.string('valid');

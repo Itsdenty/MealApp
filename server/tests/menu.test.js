@@ -9,55 +9,24 @@ import app from '../index';
  */
 
 describe('User API endpoints integration Tests', () => {
-  const meal = {
-      meal: {
-        price: 500,
-        name: 'Ofada Rice with diced beef stew',
-        description: 'A delicious ofada rice with diced beef stew',
-        isMenu: true,
-        type: 'African',
-        promo: 'none'
-      }
-    },
-    meal400 = {
-      meal: {
-        price: 0,
-        name: 'Ofada Rice with diced beef stew',
-        description: 'A delicious ofada rice with diced beef stew',
-        isMenu: 'nice',
-        type: 'African Delight',
-        promo: 'none'
-      }
-    },
-    login = {
+  const login = {
       login: {
         email: 'dent4real@yahoo.com',
         password: 'oloreofe'
       }
     },
     token401 = 'awesome-token-for-us',
-    mealUpdate = {
-      meal: {
+    menuUpdate = {
+      menu: {
         price: 400,
         name: 'Ofada Rice with diced beef stew',
         description: 'A delicious ofada rice with diced beef stew',
-        isMenu: true,
+        ismenu: true,
         type: 'African',
         promo: 'none'
       }
-    },
-    mealUpdate400 = {
-      meal: {
-        price: 0,
-        name: 5000,
-        description: 'A delicious ofada rice with diced beef stew',
-        isMenu: true,
-        type: 'African Delight',
-        promo: 'none'
-      }
     };
-  let mealId = '',
-    token = '';
+  let token = '';
 
   describe('#POST / user login', () => {
     it('should login a user', (done) => {
@@ -74,41 +43,27 @@ describe('User API endpoints integration Tests', () => {
     });
   });
 
-  // create meal tests
-  describe('#POST / meal', () => {
-    it('should create a meal', (done) => {
-      request(app).post('/api/v1/meal').send(meal)
+  // get all menus tests
+  describe('#GET / menu', () => {
+    it('should get all menus', (done) => {
+      request(app).get('/api/v1/menu')
         .set('Authorization', token)
         .end((err, res) => {
           if (err) return done(err);
           expect(res.statusCode).to.equal(200);
           expect(res.body.status).to.equal(200);
           expect(res.body).to.be.an('object');
-          expect(res.body.data).to.be.an('object');
-          mealId = res.body.data.id;
+          console.log(res.body.data);
+          expect(res.body.data.menu[0]).to.be.an('object');
+          expect(res.body.data.menu[0].name).to.have.string('smoothie');
           done();
         });
     });
   });
 
-  describe('#POST / meal', () => {
-    it('should throw a 400 error for a meal creation', (done) => {
-      request(app).post('/api/v1/meal').send(meal400)
-        .set('Authorization', token)
-        .end((err, res) => {
-          if (err) return done(err);
-          expect(res.statusCode).to.equal(400);
-          expect(res.body.status).to.equal(400);
-          expect(res.body).to.be.an('object');
-          expect(res.body.error).to.have.string('valid');
-          done();
-        });
-    });
-  });
-
-  describe('#POST / meal', () => {
-    it('should throw a 401 error for meal creation', (done) => {
-      request(app).post('/api/v1/meal').send(meal)
+  describe('#GET / menu', () => {
+    it('should throw a 401 error for getting all menus', (done) => {
+      request(app).get('/api/v1/menu')
         .set('Authorization', token401)
         .end((err, res) => {
           if (err) return done(err);
@@ -121,9 +76,9 @@ describe('User API endpoints integration Tests', () => {
     });
   });
 
-  describe('#POST / meal', () => {
-    it('should throw a 403 error for meal creation', (done) => {
-      request(app).post('/api/v1/meal').send(meal)
+  describe('#GET / menu', () => {
+    it('should throw a 403 error for creating a menu', (done) => {
+      request(app).get('/api/v1/menu')
         .end((err, res) => {
           if (err) return done(err);
           expect(res.statusCode).to.equal(403);
@@ -135,56 +90,10 @@ describe('User API endpoints integration Tests', () => {
     });
   });
 
-  // get all meals tests
-  describe('#GET / meal', () => {
-    it('should get all meals', (done) => {
-      request(app).get('/api/v1/meal')
-        .set('Authorization', token)
-        .end((err, res) => {
-          if (err) return done(err);
-          expect(res.statusCode).to.equal(200);
-          expect(res.body.status).to.equal(200);
-          expect(res.body).to.be.an('object');
-          expect(res.body.data.meals[0]).to.be.an('object');
-          expect(res.body.data.meals[0].name).to.have.string('smoothie');
-          done();
-        });
-    });
-  });
-
-  describe('#GET / meal', () => {
-    it('should throw a 401 error for getting all meals', (done) => {
-      request(app).get('/api/v1/meal')
-        .set('Authorization', token401)
-        .end((err, res) => {
-          if (err) return done(err);
-          expect(res.statusCode).to.equal(401);
-          expect(res.body.status).to.equal(401);
-          expect(res.body).to.be.an('object');
-          expect(res.body.error).to.have.string('malformed');
-          done();
-        });
-    });
-  });
-
-  describe('#GET / meal', () => {
-    it('should throw a 403 error for creating a meal', (done) => {
-      request(app).get('/api/v1/meal')
-        .end((err, res) => {
-          if (err) return done(err);
-          expect(res.statusCode).to.equal(403);
-          expect(res.body.status).to.equal(403);
-          expect(res.body).to.be.an('object');
-          expect(res.body.error).to.have.string('provided');
-          done();
-        });
-    });
-  });
-
-  // update a single meal tests
-  describe('#PUT / meal', () => {
-    it('should update an existing meal', (done) => {
-      request(app).put(`/api/v1/meal/${mealId}`).send(mealUpdate)
+  // update a single menu tests
+  describe('#PATCH / menu', () => {
+    it('should update an existing menu', (done) => {
+      request(app).patch('/api/v1/menu/2').send(menuUpdate)
         .set('Authorization', token)
         .end((err, res) => {
           if (err) return done(err);
@@ -192,15 +101,15 @@ describe('User API endpoints integration Tests', () => {
           expect(res.body.status).to.equal(200);
           expect(res.body).to.be.an('object');
           expect(res.body.data).to.be.an('object');
-          expect(res.body.data.message).to.have.string('updated');
+          expect(res.body.data.message).to.have.string('created');
           done();
         });
     });
   });
 
-  describe('#PUT / ', () => {
-    it('should throw a 400 error for updating a single meal', (done) => {
-      request(app).put('/api/v1/meal/some').send(mealUpdate400)
+  describe('#PATCH /menu ', () => {
+    it('should throw a 400 error for updating a single menu', (done) => {
+      request(app).patch('/api/v1/menu/some')
         .set('Authorization', token)
         .end((err, res) => {
           if (err) return done(err);
@@ -212,9 +121,9 @@ describe('User API endpoints integration Tests', () => {
         });
     });
   });
-  describe('#PUT / meal', () => {
-    it('should throw a 401 error for updating a single meal', (done) => {
-      request(app).put(`/api/v1/meal/${mealId}`).send(mealUpdate)
+  describe('#PATCH / menu', () => {
+    it('should throw a 401 error for updating a single menu', (done) => {
+      request(app).patch('/api/v1/menu/2')
         .set('Authorization', token401)
         .end((err, res) => {
           if (err) return done(err);
@@ -226,9 +135,9 @@ describe('User API endpoints integration Tests', () => {
         });
     });
   });
-  describe('#PUT / meal', () => {
-    it('should throw a 500 error for updating a single meal', (done) => {
-      request(app).put('/api/v1/meal/5000005').send(mealUpdate)
+  describe('#menu / menu', () => {
+    it('should throw a 500 error for updating a single menu', (done) => {
+      request(app).patch('/api/v1/menu/5000005')
         .set('Authorization', token)
         .end((err, res) => {
           if (err) return done(err);
@@ -240,9 +149,9 @@ describe('User API endpoints integration Tests', () => {
         });
     });
   });
-  describe('#PUT / meal', () => {
-    it('should throw a 403 error for updating a single meal', (done) => {
-      request(app).put(`/api/v1/meal/${mealId}`).send(mealUpdate)
+  describe('#menu / menu', () => {
+    it('should throw a 403 error for updating a single menu', (done) => {
+      request(app).patch('/api/v1/menu/2')
         .end((err, res) => {
           if (err) return done(err);
           expect(res.statusCode).to.equal(403);
@@ -254,10 +163,10 @@ describe('User API endpoints integration Tests', () => {
     });
   });
 
-  // delete a meal tests
-  describe('#DELETE / meal', () => {
-    it('should delete a meal', (done) => {
-      request(app).delete(`/api/v1/meal/${mealId}`)
+  // delete a menu tests
+  describe('#DELETE / menu', () => {
+    it('should delete a menu', (done) => {
+      request(app).delete('/api/v1/menu/2')
         .set('Authorization', token)
         .end((err, res) => {
           if (err) return done(err);
@@ -271,9 +180,9 @@ describe('User API endpoints integration Tests', () => {
     });
   });
 
-  describe('#DELETE / meal', () => {
-    it('should throw a 400 error for deleting a single meal', (done) => {
-      request(app).delete('/api/v1/meal/some')
+  describe('#DELETE / menu', () => {
+    it('should throw a 400 error for deleting a single menu', (done) => {
+      request(app).delete('/api/v1/menu/some')
         .set('Authorization', token)
         .end((err, res) => {
           if (err) return done(err);
@@ -286,9 +195,9 @@ describe('User API endpoints integration Tests', () => {
     });
   });
 
-  describe('#DELETE / meal', () => {
-    it('should throw a 500 error for deleting a single meal', (done) => {
-      request(app).delete('/api/v1/meal/5000000')
+  describe('#DELETE / menu', () => {
+    it('should throw a 500 error for deleting a single menu', (done) => {
+      request(app).delete('/api/v1/menu/5000000')
         .set('Authorization', token)
         .end((err, res) => {
           if (err) return done(err);
@@ -301,9 +210,9 @@ describe('User API endpoints integration Tests', () => {
     });
   });
 
-  describe('#DELETE / meal', () => {
-    it('should throw a 401 error for deleting a single meal', (done) => {
-      request(app).delete(`/api/v1/meal/${mealId}`)
+  describe('#DELETE / menu', () => {
+    it('should throw a 401 error for deleting a single menu', (done) => {
+      request(app).delete('/api/v1/menu/2')
         .set('Authorization', token401)
         .end((err, res) => {
           if (err) return done(err);
@@ -316,9 +225,9 @@ describe('User API endpoints integration Tests', () => {
     });
   });
 
-  describe('#DELETE / meals', () => {
-    it('should throw a 403 error for deleting a single meal', (done) => {
-      request(app).delete(`/api/v1/meal/${mealId}`)
+  describe('#DELETE / menus', () => {
+    it('should throw a 403 error for deleting a single menu', (done) => {
+      request(app).delete('/api/v1/menu/2')
         .end((err, res) => {
           if (err) return done(err);
           expect(res.statusCode).to.equal(403);
