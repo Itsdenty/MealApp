@@ -42,7 +42,6 @@ class orderProcessor {
    * @return{json} the registered user's detail
    */
   static async getOrders(userId, isAdmin) {
-    console.log('cool');
     let query = { where: { userId } };
     if (isAdmin) {
       query = { where: { catererId: userId } };
@@ -64,15 +63,15 @@ class orderProcessor {
    * @description - Creates a new user in the app and assigns a token to them
    * @param{*} userId - api request
    * @param{*} id - route response
-   * @param{*} meal - route response
+   * @param{*} order - route response
    * @return{json} the registered user's detail
    */
-  static async updateMeal(userId, id, meal) {
+  static async updateOrder(userId, id, order) {
     try {
-      const updatedMeal = await database.Meal.update(meal, { where: { userId, id } }),
+      const updatedOrder = await database.Meal.update(order, { where: { userId, id } }),
         resp = {
           message: 'Meal updated successfully',
-          id: updatedMeal.id
+          id: updatedOrder.id
         };
       return resp;
     } catch (e) {
