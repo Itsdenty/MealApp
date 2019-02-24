@@ -59,13 +59,13 @@ class orderController {
    * @param {*} req
    * @param {*} res
    * @memberof orderController
-   * @returns {*} createMeal
+   * @returns {*} updateOrder
    */
-  static async updateMeal(req, res) {
-    const { meal } = req.body,
+  static async updateOrder(req, res) {
+    const { order } = req.body,
       userId = req.decodedToken.id;
     try {
-      const updateMeal = await processor.updateMeal(userId, req.params.id, meal);
+      const updateMeal = await processor.updateOrder(userId, req.params.id, order);
       res.send(transformer.transformResponse(200, updateMeal));
     } catch (error) {
       res.status(500).json(transformer.transformResponse(500, error.error));
