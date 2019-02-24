@@ -50,7 +50,6 @@ class userProcessor {
       }
     } catch (e) {
       // create and throw 500 error
-      console.log(e);
       const err = { error: 'and error occured or user already exists' };
       throw err;
     }
@@ -90,7 +89,6 @@ class userProcessor {
       }
     } catch (e) {
       // create and throw 500 error
-      console.log(e);
       const err = { error: 'and error occured while trying to log the user in' };
       throw err;
     }
