@@ -19,7 +19,7 @@ class userProcessor {
     try {
       user.roleId = user.roleId ? user.roleId : 3;
       let Role = [];
-      Role = await database.Role.findByPK(user.roleId);
+      Role = await database.Role.findById(user.roleId);
 
       // populate the default user permissions based on his roles
       user.permissions = Role.permissions;
@@ -50,6 +50,7 @@ class userProcessor {
       }
     } catch (e) {
       // create and throw 500 error
+      console.log(e);
       const err = { error: 'and error occured or user already exists' };
       throw err;
     }
@@ -89,6 +90,7 @@ class userProcessor {
       }
     } catch (e) {
       // create and throw 500 error
+      console.log(e);
       const err = { error: 'and error occured while trying to log the user in' };
       throw err;
     }
