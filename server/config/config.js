@@ -26,7 +26,7 @@ module.exports = {
   travis: {
     username: 'postgres',
     password: '',
-    database: 'travis_ci_test',
+    database: 'travis',
     host: 'localhost',
     dialect: 'postgres'
   }
