@@ -12,11 +12,16 @@ class mealProcessor {
    */
   static async createMenu(id) {
     try {
-      const createdMeal = await database.Meal.update({ isMenu: true }, { where: { id } }),
-        resp = {
-          message: 'Meal created successfully',
-          id: createdMeal.id
-        };
+      const createdMenu = await database.Meal.update({ isMenu: true }, { where: { id } });
+      if (createdMenu[0] === 0) {
+        // create and throw 500 error
+        const err = { error: 'and error occured' };
+        throw err;
+      }
+      const resp = {
+        message: 'Meal created successfully',
+        menu: createdMenu
+      };
       return resp;
     } catch (e) {
       // create and throw 500 error
@@ -33,9 +38,9 @@ class mealProcessor {
    */
   static async getMenu(userId) {
     try {
-      const meals = await database.Meal.findAll({ where: { userId, isMenu: true } }),
+      const menu = await database.Meal.findAll({ where: { userId, isMenu: true } }),
         resp = {
-          meals
+          menu
         };
       return resp;
     } catch (e) {
@@ -53,11 +58,16 @@ class mealProcessor {
    */
   static async deleteMenu(id) {
     try {
-      const meal = await database.Meal.update({ isMenu: false }, { where: { id } }),
-        resp = {
-          message: 'Meal deleted successfully',
-          meal
-        };
+      const menu = await database.Meal.update({ isMenu: false }, { where: { id } });
+      if (menu[0] === 0) {
+        // create and throw 500 error
+        const err = { error: 'and error occured' };
+        throw err;
+      }
+      const resp = {
+        message: 'Meal deleted successfully',
+        menu
+      };
       return resp;
     } catch (e) {
       // create and throw 500 error

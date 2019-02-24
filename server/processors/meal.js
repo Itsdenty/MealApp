@@ -81,7 +81,6 @@ class mealProcessor {
   static async deleteMeal(id) {
     try {
       const meal = await database.Meal.destroy({ where: { id } });
-      console.log(meal);
       if (meal === 0) {
         // create and throw 500 error
         const err = { error: 'and error occured' };
