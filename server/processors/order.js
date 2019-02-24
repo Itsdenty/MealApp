@@ -47,9 +47,9 @@ class orderProcessor {
       query = { where: { catererId: userId } };
     }
     try {
-      const meals = await database.Meal.findAll(query),
+      const orders = await database.Order.findAll(query),
         resp = {
-          meals
+          orders
         };
       return resp;
     } catch (e) {
@@ -68,11 +68,16 @@ class orderProcessor {
    */
   static async updateOrder(userId, id, order) {
     try {
-      const updatedOrder = await database.Meal.update(order, { where: { userId, id } }),
-        resp = {
-          message: 'Meal updated successfully',
-          id: updatedOrder.id
-        };
+      const updatedOrder = await database.Order.update(order, { where: { userId, id } });
+      if (updatedOrder[0] === 0) {
+        // create and throw 500 error
+        const err = { error: 'and error occured' };
+        throw err;
+      }
+      const resp = {
+        message: 'order updated successfully',
+        order: updatedOrder
+      };
       return resp;
     } catch (e) {
       // create and throw 500 error

@@ -146,7 +146,7 @@ describe('User API endpoints integration Tests', () => {
           expect(res.body.status).to.equal(200);
           expect(res.body).to.be.an('object');
           expect(res.body.data.meals[0]).to.be.an('object');
-          expect(res.body.data.meals[0].name).to.have.string('smoothie');
+          expect(res.body.data.meals[0].type).to.have.string('African');
           done();
         });
     });
