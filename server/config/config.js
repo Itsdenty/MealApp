@@ -1,4 +1,3 @@
-// import dbconfig from './database';
 require('dotenv').config();
 
 module.exports = {
@@ -12,7 +11,7 @@ module.exports = {
   test: {
     username: 'postgres',
     password: 'postgres',
-    database: 'meal-app-test',
+    database: 'mealtest',
     host: '127.0.0.1',
     dialect: 'postgres'
   },
@@ -26,7 +25,7 @@ module.exports = {
   travis: {
     username: 'postgres',
     password: '',
-    database: 'travis_ci_test',
+    database: 'travis',
     host: 'localhost',
     dialect: 'postgres'
   }
