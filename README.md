@@ -96,7 +96,7 @@ The App API is hosted on heroku [ here ](https://meal-app-andela.herokuapp.com/a
       <td>Allows admin to create a meal</td>
   </tr>
   <tr>
-      <td>PATCH</td>
+      <td>PUT</td>
       <td>/api/v1/meal/:id</td>
       <td>Allows admin to update a specific meals</td>
   </tr>
@@ -119,6 +119,21 @@ The App API is hosted on heroku [ here ](https://meal-app-andela.herokuapp.com/a
       <td>DELETE</td>
       <td>/api/v1/menu</td>
       <td>Allows the admin to remove an item from the day's menu</td>
+  </tr>
+    <tr>
+      <td>POST</td>
+      <td>/api/v1/order</td>
+      <td>Allows a user to creat a meal order</td>
+  </tr>
+  <tr>
+      <td>PUT</td>
+      <td>/api/v1/meal/:id</td>
+      <td>Allows admin/user to update a specific meal order</td>
+  </tr>
+    <tr>
+      <td>GET</td>
+      <td>/api/v1/order</td>
+      <td>Allows admin/user to get their respective meal orders</td>
   </tr>
 </table>
 
