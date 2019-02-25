@@ -1,6 +1,7 @@
 Meal App challenge
 The mealapp implementation for the ALCwithForloop workshop
 The App is hosted on github pages [ here ](https://itsdenty.github.io/MealApp/index.html).
+The App API is hosted on heroku [ here ](https://meal-app-andela.herokuapp.com/api-docs/).
 [![Build Status](https://travis-ci.org/Itsdenty/MealApp.svg?branch=develop)](https://travis-ci.org/Itsdenty/MealApp) 
 [![Coverage Status](https://coveralls.io/repos/github/Itsdenty/MealApp/badge.svg?branch=ch-fix-travis-build-error)](https://coveralls.io/github/Itsdenty/MealApp?branch=ch-fix-travis-build-error)
 [![Maintainability](https://api.codeclimate.com/v1/badges/5a4864a1bdf51fb7047f/maintainability)](https://codeclimate.com/github/Itsdenty/MealApp/maintainability)
